@@ -1,0 +1,23 @@
+# Logo file (add your logo.png here, but it should be committed)
+# Uncomment the line below if you don't want to commit the logo
+# logo.png
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (if you add any build tools later)
+node_modules/
+npm-debug.log
+
+# Temporary files
+*.tmp
+*.log
+
