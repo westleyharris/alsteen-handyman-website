@@ -13,6 +13,118 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Image Carousel Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const carouselTrack = document.getElementById('carouselTrack');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const pagination = document.getElementById('carouselPagination');
+    const slides = document.querySelectorAll('.carousel-slide');
+    
+    if (!carouselTrack || slides.length === 0) return;
+    
+    let currentSlide = 0;
+    
+    // Create pagination dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        dot.addEventListener('click', () => goToSlide(index));
+        pagination.appendChild(dot);
+    });
+    
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    // Update carousel position
+    function updateCarousel() {
+        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update pagination dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+        
+        // Update button states
+        prevButton.disabled = currentSlide === 0;
+        nextButton.disabled = currentSlide === slides.length - 1;
+    }
+    
+    // Go to specific slide
+    function goToSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+        currentSlide = index;
+        updateCarousel();
+    }
+    
+    // Next slide
+    function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+        } else {
+            currentSlide = 0; // Loop back to first slide
+        }
+        updateCarousel();
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+        } else {
+            currentSlide = slides.length - 1; // Loop to last slide
+        }
+        updateCarousel();
+    }
+    
+    // Event listeners
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (document.querySelector('.carousel-container:hover')) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide();
+            }
+        }
+    });
+    
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carouselTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    carouselTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextSlide(); // Swipe left - next
+            } else {
+                prevSlide(); // Swipe right - previous
+            }
+        }
+    }
+    
+    // Initialize
+    updateCarousel();
+});
+
 // Form submission handler
 const quoteForm = document.getElementById('quoteForm');
 const formMessage = document.getElementById('formMessage');
@@ -31,7 +143,8 @@ quoteForm.addEventListener('submit', async function(e) {
         // Create FormData from the form itself - this automatically handles all fields including multiple files
         const formData = new FormData(quoteForm);
         
-        // Submit to FormBackend
+        // TODO: PRODUCTION - Update FormBackend endpoint URL below to client's account
+        // Replace the URL in the fetch call with the client's FormBackend endpoint URL
         const response = await fetch('https://www.formbackend.com/f/db1341b09606524a', {
             method: 'POST',
             body: formData
