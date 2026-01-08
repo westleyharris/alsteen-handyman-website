@@ -185,7 +185,7 @@
                 
                 <div class="quote-form-container">
                     <h2 class="section-title">Request a Quote</h2>
-                    <form id="quoteForm" class="quote-form">
+                    <form id="quoteForm" class="quote-form" action="https://www.formbackend.com/f/db1341b09606524a" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -208,7 +208,7 @@
                         
                         <div class="form-group">
                             <label for="images">Project Photos (Optional)</label>
-                            <input type="file" id="images" name="images" multiple accept="image/*">
+                            <input type="file" id="images" name="images[]" multiple accept="image/*">
                             <small>You can select multiple images</small>
                         </div>
                         
@@ -252,7 +252,6 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
