@@ -302,6 +302,106 @@ section {
     margin-bottom: 3rem;
 }
 
+/* Reviews Section */
+.reviews {
+    background-color: var(--bg-dark);
+    padding: 80px 0;
+}
+
+.reviews-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.rating-summary {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.stars {
+    font-size: 2.5rem;
+    color: #ffd700;
+    letter-spacing: 4px;
+    line-height: 1;
+}
+
+.rating-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-white);
+    line-height: 1;
+}
+
+.review-count {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.review-card {
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.review-header {
+    margin-bottom: 1rem;
+}
+
+.review-stars {
+    font-size: 1.25rem;
+    color: #ffd700;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+}
+
+.review-author {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 0.25rem;
+}
+
+.review-date {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.review-text {
+    color: #d5d5d5;
+    line-height: 1.7;
+    margin: 0;
+}
+
 /* Services Section */
 .services {
     background-color: var(--bg-darker);
@@ -1041,6 +1141,19 @@ section {
         line-height: 1.15;
     }
 
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stars {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+
+    .rating-number {
+        font-size: 2.5rem;
+    }
+
     .services-grid {
         grid-template-columns: 1fr;
     }
@@ -1211,6 +1324,23 @@ section {
     .image-label {
         padding: 8px 16px;
         font-size: 0.875rem;
+    }
+
+    .stars {
+        font-size: 1.75rem;
+        letter-spacing: 2px;
+    }
+
+    .rating-number {
+        font-size: 2rem;
+    }
+
+    .review-count {
+        font-size: 1rem;
+    }
+
+    .review-card {
+        padding: 1.5rem;
     }
 }
 
