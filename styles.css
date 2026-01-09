@@ -1187,13 +1187,17 @@ section {
         height: 100%;
         background: linear-gradient(
             to bottom,
-            rgba(26, 26, 26, 0.4) 0%,
-            rgba(26, 26, 26, 0.5) 30%,
-            rgba(26, 26, 26, 0.7) 70%,
-            var(--bg-darker) 100%
+            transparent 0%,
+            rgba(26, 26, 26, 0.1) 30%,
+            rgba(26, 26, 26, 0.2) 70%,
+            rgba(26, 26, 26, 0.4) 100%
         );
         z-index: 1;
         pointer-events: none;
+    }
+
+    .hero-image {
+        filter: brightness(1.5) contrast(1.05) saturate(1.05);
     }
 
     .hero-content {
@@ -1385,11 +1389,15 @@ section {
     .hero-image-wrapper::before {
         background: linear-gradient(
             to bottom,
-            rgba(26, 26, 26, 0.3) 0%,
-            rgba(26, 26, 26, 0.5) 40%,
-            rgba(26, 26, 26, 0.75) 80%,
-            var(--bg-darker) 100%
+            transparent 0%,
+            rgba(26, 26, 26, 0.1) 40%,
+            rgba(26, 26, 26, 0.25) 80%,
+            rgba(26, 26, 26, 0.4) 100%
         );
+    }
+
+    .hero-image {
+        filter: brightness(1.6) contrast(1.05) saturate(1.05);
     }
 
     .hero-tagline {
