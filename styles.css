@@ -72,8 +72,9 @@ body {
 }
 
 .logo {
-    height: 50px;
+    height: 80px;
     width: auto;
+    max-height: 80px;
 }
 
 .logo-text {
@@ -979,6 +980,13 @@ section {
     line-height: 1.25;
 }
 
+.footer-logo {
+    max-height: 60px;
+    width: auto;
+    margin-bottom: 1rem;
+    display: block;
+}
+
 .footer-section p {
     color: #d5d5d5;
     line-height: 1.7;
@@ -1017,6 +1025,11 @@ section {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .logo {
+        height: 65px;
+        max-height: 65px;
+    }
+
     .nav-links {
         gap: 1rem;
         font-size: 0.9rem;
@@ -1199,6 +1212,11 @@ section {
 @media (max-width: 480px) {
     .container {
         padding: 0 15px;
+    }
+
+    .logo {
+        height: 55px;
+        max-height: 55px;
     }
 
     .nav-content {
